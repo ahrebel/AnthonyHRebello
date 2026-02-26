@@ -250,7 +250,7 @@ ul.details li::before {
 .project-card { margin-bottom: 40px; padding-bottom: 30px; border-bottom: 1px solid #eee; }
 .project-card:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
-.project-title { font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin-bottom: 5px; }
+.project-title { font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin-bottom: 5px; font-family: 'Manrope', sans-serif; }
 .project-meta { font-family: 'Playfair Display', serif; font-style: italic; color: var(--accent); margin-bottom: 15px; }
 
 .tech-stack { margin: 15px 0; }
