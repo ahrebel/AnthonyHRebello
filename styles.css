@@ -404,10 +404,17 @@ ul.details li::before {
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
+[data-theme="dark"] .nav-link:hover {
+    background-color: rgba(240, 192, 64, 0.1);
+    color: var(--accent);
+}
+
 [data-theme="dark"] .nav-link i { color: #666; }
 
 [data-theme="dark"] .nav-link.active {
-    box-shadow: 0 4px 12px rgba(91,155,213,0.3);
+    background-color: rgba(240, 192, 64, 0.15);
+    color: var(--accent);
+    box-shadow: 0 4px 12px rgba(240, 192, 64, 0.15);
 }
 
 [data-theme="dark"] .sidebar-details {
