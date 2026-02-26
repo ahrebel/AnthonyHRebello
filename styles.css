@@ -395,6 +395,45 @@ ul.details li::before {
     margin-bottom: 5px;
 }
 
+/* --- RADAR CHART --- */
+.radar-chart-section {
+    border-left-color: var(--accent);
+}
+
+.radar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.radar-container svg {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+}
+
+.radar-grid { fill: none; stroke: var(--bg-sidebar); stroke-width: 1; }
+.radar-axis { stroke: var(--bg-sidebar); stroke-width: 0.5; }
+.radar-shape {
+    fill: rgba(0, 51, 102, 0.15);
+    stroke: var(--primary);
+    stroke-width: 2;
+    transition: fill 0.3s, stroke 0.3s;
+}
+.radar-dot { fill: var(--accent); transition: fill 0.3s; }
+.radar-label {
+    fill: var(--text-dark);
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    transition: fill 0.3s;
+}
+
+[data-theme="dark"] .radar-shape {
+    fill: rgba(91, 155, 213, 0.15);
+}
+
 /* --- DARK MODE OVERRIDES --- */
 [data-theme="dark"] .sidebar-header-bg {
     background: linear-gradient(135deg, #1a2744, #243656);
