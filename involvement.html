@@ -70,7 +70,11 @@
 
     <div class="wrapper">
         <aside class="sidebar" aria-label="Site navigation and contact">
-            <div class="sidebar-header-bg" role="presentation"></div>
+            <div class="sidebar-header-bg" role="presentation">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
             <div class="profile-section">
                 <figure class="profile-img">
                     <img src="assets/hero.jpg" alt="Portrait of Anthony Rebello" loading="lazy" width="160" height="160">
@@ -94,17 +98,24 @@
                 <div class="contact-item"><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:anthony.rebello@emory.edu">anthony.rebello@emory.edu</a></div>
                 <div class="contact-item"><i class="fab fa-linkedin" aria-hidden="true"></i> <a href="https://linkedin.com/in/anthonyhrebello" target="_blank" rel="noopener">LinkedIn Profile</a></div>
 
-                <div class="skills-cloud" aria-label="Leadership focus areas">
-                    <span class="skill-tag">Outdoors</span>
-                    <span class="skill-tag">Running</span>
-                    <span class="skill-tag">Mentorship</span>
+                <div class="skills-cloud" aria-label="Research tools">
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">SPSS</span>
+                    <span class="skill-tag">MATLAB</span>
+                    <span class="skill-tag">Experimental Design</span>
+                </div>
+
+                <div class="skills-cloud" aria-label="Languages" style="margin-top: 12px;">
+                    <span class="skill-tag">English (Native)</span>
+                    <span class="skill-tag">French (Learning)</span>
                 </div>
             </div>
         </aside>
 
         <main class="main-content" id="main-content">
 
-            <section>
+            <section class="fade-in">
                 <h2 class="section-title">Academic Mentorship</h2>
 
                 <div class="role-item">
@@ -130,7 +141,7 @@
                 </div>
             </section>
 
-            <section style="border-left-color: var(--accent);">
+            <section class="fade-in" style="border-left-color: var(--accent);">
                 <h2 class="section-title">Campus Leadership</h2>
 
                 <div class="role-item">
@@ -162,5 +173,43 @@
 
         </main>
     </div>
+
+    <script>
+    (function() {
+        var toggle = document.getElementById('themeToggle');
+        var icon = toggle.querySelector('i');
+        var saved = localStorage.getItem('theme');
+        if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            icon.classList.replace('fa-moon', 'fa-sun');
+        }
+        toggle.addEventListener('click', function() {
+            var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                document.documentElement.removeAttribute('data-theme');
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    })();
+
+    (function() {
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(function(el) {
+            observer.observe(el);
+        });
+    })();
+    </script>
 </body>
 </html>
