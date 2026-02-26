@@ -24,7 +24,10 @@
       gtag('config', 'G-NYQM9J02CN');
     </script>
 
-    <link rel="icon" type="image/png" href="assets/R.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/R.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/R.png">
+    <link rel="apple-touch-icon" href="assets/R.png">
+    <meta name="theme-color" content="#003366">
 
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -187,6 +190,42 @@
                         </div>
                         <span class="item-place">Oxford College of Emory University</span>
                     </div>
+                </div>
+            </section>
+
+            <section aria-labelledby="skills-radar" class="fade-in radar-chart-section">
+                <h2 id="skills-radar" class="section-title">Skills</h2>
+                <div class="radar-container">
+                    <svg viewBox="0 0 400 380" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Grid rings (5 levels) -->
+                        <polygon class="radar-grid" points="200,50 330,125 330,275 200,350 70,275 70,125"/>
+                        <polygon class="radar-grid" points="200,110 284,155 284,245 200,290 116,245 116,155"/>
+                        <polygon class="radar-grid" points="200,140 261,170 261,230 200,260 139,230 139,170"/>
+                        <polygon class="radar-grid" points="200,170 238,185 238,215 200,230 162,215 162,185"/>
+                        <!-- Axes -->
+                        <line class="radar-axis" x1="200" y1="200" x2="200" y2="50"/>
+                        <line class="radar-axis" x1="200" y1="200" x2="330" y2="125"/>
+                        <line class="radar-axis" x1="200" y1="200" x2="330" y2="275"/>
+                        <line class="radar-axis" x1="200" y1="200" x2="200" y2="350"/>
+                        <line class="radar-axis" x1="200" y1="200" x2="70" y2="275"/>
+                        <line class="radar-axis" x1="200" y1="200" x2="70" y2="125"/>
+                        <!-- Data shape: Programming 7/10, Statistics 8/10, Exp Design 9/10, Data Viz 6/10, Lab Work 9/10, Writing 7/10 -->
+                        <polygon class="radar-shape" points="200,95 291,148 291,253 200,305 109,253 109,148"/>
+                        <!-- Dots at vertices -->
+                        <circle class="radar-dot" cx="200" cy="95" r="4"/>
+                        <circle class="radar-dot" cx="291" cy="148" r="4"/>
+                        <circle class="radar-dot" cx="291" cy="253" r="4"/>
+                        <circle class="radar-dot" cx="200" cy="305" r="4"/>
+                        <circle class="radar-dot" cx="109" cy="253" r="4"/>
+                        <circle class="radar-dot" cx="109" cy="148" r="4"/>
+                        <!-- Labels -->
+                        <text class="radar-label" x="200" y="38" text-anchor="middle">Programming</text>
+                        <text class="radar-label" x="345" y="122" text-anchor="start">Statistics</text>
+                        <text class="radar-label" x="345" y="280" text-anchor="start">Data Viz</text>
+                        <text class="radar-label" x="200" y="372" text-anchor="middle">Lab Work</text>
+                        <text class="radar-label" x="55" y="280" text-anchor="end">Writing</text>
+                        <text class="radar-label" x="55" y="122" text-anchor="end">Exp. Design</text>
+                    </svg>
                 </div>
             </section>
 
