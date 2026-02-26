@@ -70,7 +70,11 @@
     <div class="wrapper">
 
         <aside class="sidebar" aria-label="Site navigation and contact">
-            <div class="sidebar-header-bg" role="presentation"></div>
+            <div class="sidebar-header-bg" role="presentation">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
 
             <div class="profile-section">
                 <figure class="profile-img">
@@ -112,7 +116,7 @@
 
         <main class="main-content" id="main-content">
 
-            <section aria-labelledby="about">
+            <section aria-labelledby="about" class="fade-in">
                 <h2 id="about" class="section-title">About Me</h2>
                 <p>
                     I am an incoming PhD student at Georgia State University, where I will join the ADAPT Lab under Dr. Sarah Pope-Caldwell. My research interests center on cognitive flexibility — how humans and other primates adapt their thinking and decision-making to meet the demands of different environments. I am especially interested in understanding how these processes vary across species, developmental stages, and cultural contexts.
@@ -122,7 +126,7 @@
                 </p>
             </section>
 
-            <section aria-labelledby="current-research">
+            <section aria-labelledby="current-research" class="fade-in">
                 <h2 id="current-research" class="section-title">Current Research</h2>
                 <div class="item">
                     <div class="item-header">
@@ -138,7 +142,7 @@
                 </div>
             </section>
 
-            <section aria-labelledby="upcoming-research">
+            <section aria-labelledby="upcoming-research" class="fade-in">
                 <h2 id="upcoming-research" class="section-title">Upcoming: PhD Research</h2>
                 <div class="item">
                     <div class="item-header">
@@ -155,43 +159,45 @@
                 </div>
             </section>
 
-            <section aria-labelledby="education">
+            <section aria-labelledby="education" class="fade-in">
                 <h2 id="education" class="section-title">Education</h2>
-                <div class="item">
-                    <div class="item-header">
-                        <span class="item-role">Ph.D. in Psychology</span>
-                        <span class="item-date">Starting Fall 2026</span>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="item-header">
+                            <span class="item-role">Ph.D. in Psychology</span>
+                            <span class="item-date">Starting Fall 2026</span>
+                        </div>
+                        <span class="item-place">Georgia State University</span>
+                        <p class="muted-text">ADAPT Lab (Adaptive Decision-making, Problem-solving, and Thinking) — Advisor: Dr. Sarah Pope-Caldwell</p>
                     </div>
-                    <span class="item-place">Georgia State University</span>
-                    <p class="muted-text">ADAPT Lab (Adaptive Decision-making, Problem-solving, and Thinking) — Advisor: Dr. Sarah Pope-Caldwell</p>
-                </div>
 
-                <div class="item" style="margin-top: 25px;">
-                    <div class="item-header">
-                        <span class="item-role">B.S. in Psychology</span>
-                        <span class="item-date">Expected May 2026</span>
+                    <div class="timeline-item">
+                        <div class="item-header">
+                            <span class="item-role">B.S. in Psychology</span>
+                            <span class="item-date">Expected May 2026</span>
+                        </div>
+                        <span class="item-place">Emory University</span>
+                        <p class="muted-text">Relevant Coursework: Research Methods, Cognition, Statistics, Computer Science.</p>
                     </div>
-                    <span class="item-place">Emory University</span>
-                    <p class="muted-text">Relevant Coursework: Research Methods, Cognition, Statistics, Computer Science.</p>
-                </div>
 
-                <div class="item" style="margin-top: 25px;">
-                    <div class="item-header">
-                        <span class="item-role">Associate of Arts</span>
-                        <span class="item-date">May 2024</span>
+                    <div class="timeline-item">
+                        <div class="item-header">
+                            <span class="item-role">Associate of Arts</span>
+                            <span class="item-date">May 2024</span>
+                        </div>
+                        <span class="item-place">Oxford College of Emory University</span>
                     </div>
-                    <span class="item-place">Oxford College of Emory University</span>
                 </div>
             </section>
 
-            <section aria-labelledby="presentations" style="border-left-color: var(--accent);">
+            <section aria-labelledby="presentations" class="fade-in" style="border-left-color: var(--accent);">
                 <h2 id="presentations" class="section-title">Presentations</h2>
                 <p>
                     <strong>Rebello, A.</strong>, Cordish, B., Womack, J., &amp; Piramal, N. (2024). <em>How break quality and length impact attentional restoration.</em> Poster presented at Psychology Department Research Symposium, Emory University.
                 </p>
             </section>
 
-            <section aria-labelledby="publications">
+            <section aria-labelledby="publications" class="fade-in">
                 <h2 id="publications" class="section-title">Publications</h2>
                 <p style="color: var(--text-light); font-style: italic;">Coming soon.</p>
             </section>
@@ -202,5 +208,44 @@
 
         </main>
     </div>
+    <script>
+    // Dark mode toggle
+    (function() {
+        var toggle = document.getElementById('themeToggle');
+        var icon = toggle.querySelector('i');
+        var saved = localStorage.getItem('theme');
+        if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            icon.classList.replace('fa-moon', 'fa-sun');
+        }
+        toggle.addEventListener('click', function() {
+            var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                document.documentElement.removeAttribute('data-theme');
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    })();
+
+    // Scroll fade-in animations
+    (function() {
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(function(el) {
+            observer.observe(el);
+        });
+    })();
+    </script>
 </body>
 </html>
