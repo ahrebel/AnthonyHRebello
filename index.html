@@ -260,14 +260,14 @@
           </p>
         </div>
         <div class="contact-links reveal">
-          <a href="/cdn-cgi/l/email-protection#23424d574b4c4d5a0d514641464f4f4c63464e4c515a0d464756" class="contact-link">
+          <a href="mailto:anthony.rebello@emory.edu" class="contact-link">
             <span class="contact-link-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                 <polyline points="22,6 12,13 2,6"/>
               </svg>
             </span>
-            <span class="__cf_email__" data-cfemail="22434c564a4d4c5b0c504740474e4e4d62474f4d505b0c474657">[email&#160;protected]</span>
+            anthony.rebello@emory.edu
           </a>
           <a href="https://linkedin.com/in/anthonyhrebello" class="contact-link" target="_blank" rel="noopener">
             <span class="contact-link-icon">
@@ -295,15 +295,23 @@
     <p>© 2026 <span>Anthony Rebello</span> · Comparative Cognition Researcher · Atlanta, GA</p>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Scroll nav shadow
+  <script>
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 30);
     });
 
-    // Reveal on scroll
-    const reveals = document.querySelectorAll('.reveal');
+    document.body.classList.add('js-ready');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
-        if (entry.isInters
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
