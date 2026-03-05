@@ -30,16 +30,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Research Projects | Anthony Rebello",
-    "url": "https://anthonyhrebello.com/research.html",
-    "author": { "@type": "Person", "name": "Anthony H. Rebello", "url": "https://anthonyhrebello.com/" }
-  }
-  </script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -197,13 +187,13 @@
   <footer>
     <p>© 2026 <span>Anthony Rebello</span> · Comparative Cognition Researcher · Atlanta, GA</p>
   </footer>
-
   <script>
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 30);
     });
 
+    document.body.classList.add('js-ready');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
