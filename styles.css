@@ -176,12 +176,20 @@ footer {
 footer span { color: var(--accent-light); }
 
 /* ── REVEAL ANIMATION ── */
+/* Elements are visible by default; JS opts-in to the animation */
 .reveal {
-  opacity: 0;
-  transform: translateY(20px);
+  opacity: 1;
+  transform: none;
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
-.reveal.visible { opacity: 1; transform: none; }
+.js-ready .reveal {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.js-ready .reveal.visible {
+  opacity: 1;
+  transform: none;
+}
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
@@ -255,7 +263,7 @@ footer span { color: var(--accent-light); }
   filter: grayscale(15%);
 }
 
-section { padding: 7rem 4rem; }
+section:not(.hero) { padding: 7rem 4rem; }
 .section-inner { max-width: 960px; margin: 0 auto; }
 .section-label {
   font-size: 0.7rem;
@@ -503,7 +511,7 @@ section { padding: 7rem 4rem; }
   .hero { grid-template-columns: 1fr; padding: 7rem 1.75rem 4rem; gap: 3rem; }
   .hero-image { order: -1; max-width: 320px; }
 
-  section { padding: 5rem 1.75rem; }
+  section:not(.hero) { padding: 5rem 1.75rem; }
   .research-grid { grid-template-columns: 1fr; }
   .about-grid { grid-template-columns: 1fr; gap: 3rem; }
   .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
