@@ -34,6 +34,15 @@
 </head>
 <body>
 
+  <!-- MOBILE NAV DRAWER -->
+  <div class="nav-drawer" id="navDrawer">
+    <button class="nav-drawer-close" id="navClose" aria-label="Close menu">✕</button>
+    <a href="index.html" class="">Overview</a>
+    <a href="research.html" class="">Research</a>
+    <a href="involvement.html" class="active">Leadership</a>
+    <a href="AnthonyRebelloCV.pdf" target="_blank" rel="noopener">CV</a>
+  </div>
+
   <nav id="nav">
     <a href="index.html" class="nav-name">Anthony Rebello</a>
     <ul class="nav-links">
@@ -42,6 +51,7 @@
       <li><a href="involvement.html" class="active">Leadership</a></li>
       <li><a href="AnthonyRebelloCV.pdf" target="_blank" rel="noopener">CV</a></li>
     </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
   </nav>
 
   <header class="page-header">
@@ -177,6 +187,28 @@
       nav.classList.toggle('scrolled', window.scrollY > 30);
     });
 
+
+    // Mobile nav
+    const hamburger = document.getElementById('navHamburger');
+    const drawer = document.getElementById('navDrawer');
+    const navClose = document.getElementById('navClose');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      drawer.classList.toggle('open');
+      document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+    });
+    navClose.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+    drawer.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        drawer.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
     document.body.classList.add('js-ready');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
